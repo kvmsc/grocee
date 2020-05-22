@@ -1,0 +1,8 @@
+//Registration
+curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin", "password":"password", "email":"admin@grocery.com"}' http://127.0.0.1:5000/api/usr_register
+
+//User login
+curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin@grocery.com", "password":"password"}' http://127.0.0.1:5000/api/usr_login
+
+//Get Shops
+curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwMTU5ODcwfQ.mD9-RbCWki0g9bHt_Enn8Gj1Tu3eG1w4_PFMMmKHPC4", "page":"1"}' http://127.0.0.1:5000/api/get_shops
