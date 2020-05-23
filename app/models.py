@@ -24,6 +24,7 @@ class Shop(db.Model):
     name = db.Column(db.String(50))
     email = db.Column(db.String(30), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    imgurl = db.Column(db.String(100))
 
     def __repr__(self):
         return '<Shop {}>'.format(self.name)
@@ -37,5 +38,6 @@ class Shop(db.Model):
     def serialize(self):
         return {
             'shop_id' : self.id,
-            'name' : self.name
+            'name' : self.name,
+            'imgurl' : self.imgurl,
         }
