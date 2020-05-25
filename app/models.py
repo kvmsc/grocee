@@ -39,5 +39,57 @@ class Shop(db.Model):
         return {
             'shop_id' : self.id,
             'name' : self.name,
-            'imgurl' : self.imgurl,
+            'image' : self.imgurl,
         }
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    imgurl = db.Column(db.String(100))
+    commodities = db.relationship('Commodity', 
+                                backref='category', lazy=True)
+    
+    """
+    brands = db.relationship('Brand',
+                            backref='category', lazy=True)
+    """
+
+    def __repr__(self):
+        return '<Category {}>'.format(self.name)
+    
+    def serialize(self):
+        return {
+            'cat_id' : self.id,
+            'name' : self.name,
+            'image' : self.imgurl,
+        }
+
+
+class Commodity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    sub_cat = db.Column(db.String(50), index=True)
+    cat_id = db.Column(db.Integer, 
+                        db.ForeignKey('category.id'), nullable=False)
+    imgurl = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Commodity {}>'.format(self.name)
+    
+    def serialize(self):
+        return {
+            'comm_id' : self.id,
+            'name' : self.name,
+            'image' : self.imgurl,
+        }
+
+"""
+class Brand(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    cat_id = db.Column(db.Integer,
+                        db.ForeignKey('category.id', nullable=False))
+
+    def __repr__(self):
+        return '<Brand {}>'.format(self.name)
+"""
