@@ -5,4 +5,4 @@ curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin", "pa
 curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin@grocery.com", "password":"password"}' http://127.0.0.1:5000/api/usr_login
 
 //Get Shops
-curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwMTU5ODcwfQ.mD9-RbCWki0g9bHt_Enn8Gj1Tu3eG1w4_PFMMmKHPC4", "page":"1"}' http://127.0.0.1:5000/api/get_shops
+curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwNTg5ODIxfQ.TGpMQ_FpKd1yA2oule-1RwhHKVjBLiO_7Dji2oZ-_i0", "page":"1"}' http://127.0.0.1:5000/api/get_shops
