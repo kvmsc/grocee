@@ -44,17 +44,17 @@ def get_items():
 
     cat_id = int(request.json.get('cat_id'))
     if cat_id:
-        prod_query.filter_by(Product.cat_id==cat_id)
+        prod_query.filter(Product.cat_id==cat_id)
 
     brand_id = int(request.json.get('brands'))
     if brand_id:
-        prod_query.filter_by(Product.brand_id==brand_id)
+        prod_query.filter(Product.brand_id==brand_id)
     
     subcat_id = innt(request.json.get('subcat_id'))
     if subcat_id:
-        prod_query.filter_by(Product.com_id==subcat_id)
+        prod_query.filter(Product.com_id==subcat_id)
     
-    prod_query.join(ShopVariant).filter_by(ShopVariant.shop_id==shop_id).distinct()
+    prod_query.join(ShopVariant).filter(ShopVariant.shop_id==shop_id).distinct()
 
     page = int(request.json.get('page'))
 
