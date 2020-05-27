@@ -42,16 +42,19 @@ def get_items():
     
     prod_query = db.session.query(Product)
 
-    cat_id = int(request.json.get('cat_id'))
+    cat_id = request.json.get('cat_id')
     if cat_id:
+        cat_id = int(cat_id)
         prod_query.filter(Product.cat_id==cat_id)
 
-    brand_id = int(request.json.get('brands'))
+    brand_id = request.json.get('brands')
     if brand_id:
+        brand_id = int(brand_id)
         prod_query.filter(Product.brand_id==brand_id)
     
-    subcat_id = innt(request.json.get('subcat_id'))
+    subcat_id = request.json.get('subcat_id')
     if subcat_id:
+        subcat_id = int(subcat_id)
         prod_query.filter(Product.com_id==subcat_id)
     
     prod_query.join(ShopVariant).filter(ShopVariant.shop_id==shop_id).distinct()
