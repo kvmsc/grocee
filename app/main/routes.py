@@ -63,6 +63,6 @@ def get_items():
 
     products = prod_query.paginate(page, current_app.config['ITEMS_PER_PAGE'], False)
     
-    return jsonify(products=[p.serialize() for p in products.items],
+    return jsonify(products=[p.serialize(shop_id) for p in products.items],
                      has_next=products.has_next), 200                     
 

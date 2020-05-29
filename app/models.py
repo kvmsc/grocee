@@ -125,11 +125,12 @@ class Product(db.Model):
     def __repr__(self):
         return '<Product {}>'.format(self.name)
     
-    def serialize(self):
+    def serialize(self, shop_id):
         return {
             "prod_id" : self.id,
             "name" : self.name,
-            "image" : self.imgurl
+            "image" : self.imgurl,
+            "variants" : [_ for _ in (v.serialize(shop_id) for v in self.variants) if _ is not None],
         }
     
 class Variant(db.Model):
@@ -142,13 +143,15 @@ class Variant(db.Model):
     def __repr__(self):
         return '<Variant {}>'.format(self.name)    
     
-    """
-    def serialize(self):
+    def serialize(self, shop_id):
+        _sv = db.session.query(ShopVariant).get((shop_id,self.id))
+        if not _sv:
+            return None
         return {
             "var_id" : self.id,
-            "qty" : self.qty
+            "qty" : self.qty,
+            "price" : _sv.price,
         }
-    """
 
 class ShopVariant(db.Model):
     shop_id = db.Column(db.Integer, db.ForeignKey('shop.id'), primary_key=True)

@@ -8,4 +8,4 @@ curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin@groce
 curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwODA1NjUwfQ.hbuT78tiN0CFcn5U1pWCg-dhfRkKLbjHBGFhJ3Ki0E0", "page":"1"}' https://grocee.thenomadic.ninja/api/get_shops
 
 //Get items
-curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwNjYyNjYyfQ.mKVFnpEQTQdyoa2nSYHuD6MQ3qItyOoGD4BxE7Aoz9M", "page":"1","shop_id":"1", "cat_id":"1"}' http://127.0.0.1:5000/api/get_items
+curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwODc1ODc0fQ.Zt8jBDgsIoMW5I8nT5zti4WR3rAGlvJl77thR3pzc94", "page":"1","shop_id":"1", "cat_id":"1"}' http://127.0.0.1:5000/api/get_items
