@@ -2,7 +2,10 @@
 curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin", "password":"password", "email":"admin@grocery.com"}' http://127.0.0.1:5000/api/usr_register
 
 //User login
-curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin@grocery.com", "password":"password"}' http://127.0.0.1:5000/api/usr_login
+curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin@grocery.com", "password":"password"}' https://grocee.thenomadic.ninja/api/usr_login
 
 //Get Shops
-curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwNTg5ODIxfQ.TGpMQ_FpKd1yA2oule-1RwhHKVjBLiO_7Dji2oZ-_i0", "page":"1"}' http://127.0.0.1:5000/api/get_shops
+curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwODA1NjUwfQ.hbuT78tiN0CFcn5U1pWCg-dhfRkKLbjHBGFhJ3Ki0E0", "page":"1"}' https://grocee.thenomadic.ninja/api/get_shops
+
+//Get items
+curl -i -H "Content-Type: application/json" -X POST -d '{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTkwNjYyNjYyfQ.mKVFnpEQTQdyoa2nSYHuD6MQ3qItyOoGD4BxE7Aoz9M", "page":"1","shop_id":"1", "cat_id":"1"}' http://127.0.0.1:5000/api/get_items
