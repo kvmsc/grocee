@@ -1,0 +1,55 @@
+//Gunicorn as a service
+edit "/etc/systemd/system/"
+add new file grocee.service
+
+Add the following lines
+
+[Unit]
+Description=Gunicorn Service for grocee
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/grocee
+ExecStart=/home/ubuntu/grocee/venv/bin/gunicorn --bind unix:grocee.sock -m 007 grocery:app
+
+
+//Reload system daemon
+sudo systemctl daemon-reload
+
+//Start grocee service
+sudo service grocee start
+
+//See status
+sudo service grocee status
+
+#Also Update nginx with socket path
+
+cd /etc/nginx/sites-enabled/
+
+edit default or create a new file
+
+
+server{
+    listen 80;
+    server_name grocee.thenomadic.ninja;
+    return 301 https://grocee.thenomadic.ninja$request_uri
+}
+
+server{
+    listen 443 ssl;
+    #ssl certificate
+    #ssl certificate key
+    server_name "Your Domain"
+
+    location / {
+        proxy_pass http://unix:/home/ubuntu/grocee/grocee.sock;
+        #proxy_pass http//:127.0.0.1:8000
+    }
+}
+
+//restart nginx
+sudo service nginx restart
+sudo service grocee restart
+

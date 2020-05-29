@@ -7,7 +7,7 @@ from helpers import *
 
 @bp.route('/')
 def index():
-    return "You've reached Grocee API"
+    return "<html><body><h1>You've reached Grocee API</h1></body></html>"
 
 @bp.route('/api', methods=['POST'])
 @token_required
